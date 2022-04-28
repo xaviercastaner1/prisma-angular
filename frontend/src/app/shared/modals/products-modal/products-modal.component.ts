@@ -12,6 +12,7 @@ import { CategoryService } from '../../services/category.service';
 export class ProductsModalComponent implements OnInit {
 
   @Output() submitClicked = new EventEmitter<any>();
+  title: string = 'Afegir Producte'
 
   categories: Category[] = []
 
@@ -30,7 +31,11 @@ export class ProductsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
+    console.log('data', this.data)
+    if (this.data) {
+      this.product = this.data
+      this.title = 'Actualitzar Producte'
+    }
     this.service.getAllCategories()
       .subscribe(categories => {
         this.categories = categories
