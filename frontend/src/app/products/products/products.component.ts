@@ -50,6 +50,22 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  editProduct(product: Product) {
+    const dialogRef = this.dialog.open(ProductsModalComponent, {
+      data: product
+    });
+    dialogRef.componentInstance.submitClicked.subscribe(product => {
+      console.log('Edited Product', product);
+
+      // do something here with the data
+      this.service.putProduct(product)
+        .subscribe(res => {
+          console.log('res', res)
+          this.getAll()
+        })
+    });
+  }
+
   deleteProduct(product: Product) {
     this.service.deleteProduct(product.id!)
       .subscribe(result => {

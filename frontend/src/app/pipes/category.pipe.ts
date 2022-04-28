@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Injector } from '@angular/core';
+import { map, Observable } from 'rxjs';
+import { Category } from '../interfaces/category';
 import { CategoryService } from '../shared/services/category.service';
 
 export let AppInjector: Injector;
@@ -9,13 +11,17 @@ export let AppInjector: Injector;
 })
 export class CategoryPipe implements PipeTransform {
 
-  private service = AppInjector.get(CategoryService)
+  constructor(private service: CategoryService) {}
 
-  transform(id: number, ...args: unknown[]) {
-    this.service.getCategory(id)
-      .subscribe(category => {
-        return category.name;
-      })
+  category!: Category
+
+  transform(id: number, ...args: any[]): Observable<string> {
+    return this.service.getCategory(id)
+      .pipe(
+        map((category: Category) => {
+          return category.name
+        })
+      )
   }
 
 }

@@ -17,6 +17,10 @@ export class ProductService {
     return this.httpClient.post(`http://localhost:3000/product`, product)
   }
 
+  putProduct(product: Product) {
+    return this.httpClient.put(`http://localhost:3000/product/${product.id}`, product)
+  }
+
   deleteProduct(id: number) {
     return this.httpClient.delete(`http://localhost:3000/product/${id}`)
   }

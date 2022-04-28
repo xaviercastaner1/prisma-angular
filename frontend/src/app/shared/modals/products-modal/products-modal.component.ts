@@ -1,5 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 import { CategoryService } from '../../services/category.service';
@@ -22,6 +22,7 @@ export class ProductsModalComponent implements OnInit {
   }
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Product,
     public dialogRef: MatDialogRef<ProductsModalComponent>,
     private service: CategoryService
   ) {
@@ -29,6 +30,7 @@ export class ProductsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.data)
     this.service.getAllCategories()
       .subscribe(categories => {
         this.categories = categories
@@ -36,7 +38,13 @@ export class ProductsModalComponent implements OnInit {
   }
   
   saveMessage() {
-    this.submitClicked.emit(this.product);
+    if (this.data) {
+      this.submitClicked.emit(this.data);
+
+    } else {
+      this.submitClicked.emit(this.product);
+
+    }
   }
 
   closeDialog() {

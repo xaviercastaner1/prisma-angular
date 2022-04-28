@@ -1,22 +1,22 @@
-<h2 mat-dialog-title>Afegir Producte</h2>
+<h2 mat-dialog-title>{{data ? 'Actualitzar Producte' : 'Afegir Producte'}}</h2>
 <mat-dialog-content class="mat-typography">
 
     <form (ngSubmit)="saveMessage()">
         <div class="form-group mb-3">
             <label for="name">Nom: </label>
             <input type="text" name="name"
-            class="form-control" [(ngModel)]="product.name">
+            class="form-control" [(ngModel)]="data ? data.name : product.name">
         </div>
 
         <div class="form-group mb-3">
             <label for="description">Descripció: </label>
             <input type="text" name="description"
-            class="form-control" [(ngModel)]="product.description">
+            class="form-control" [(ngModel)]="data ? data.description : product.description">
         </div>
 
         <div class="form-group">
             <label for="category">Categoria: </label>
-            <select name="category" [(ngModel)]="product.category"
+            <select name="category" [(ngModel)]="data ? data.category : product.category"
             class="form-select">
                 <option *ngFor="let category of categories" value="{{category.id}}">
                 {{category.name}}

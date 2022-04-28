@@ -14,7 +14,7 @@ export class CategoryService {
   }
 
   getCategory(id: number) {
-    return this.httpClient.get<any>(`http://localhost:3000/category/id`)
+    return this.httpClient.get<any>(`http://localhost:3000/category/${id}`)
   }
 
   postCategory(category: Category) {
