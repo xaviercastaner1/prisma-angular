@@ -1,8 +1,12 @@
 const express = require('express')
 const {PrismaClient} = require('@prisma/client')
 
+var cors = require('cors')
+
 const prisma = new PrismaClient()
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
@@ -15,7 +19,7 @@ app.post(`/product`, async(req, res)=>{
     const { name, description, category } = req.body
     const result = await prisma.product.create({
         data: {
-            name, description, category
+            name, description, categoryId: Number(category)
         }
     })
     res.json(result)
@@ -58,7 +62,7 @@ app.delete(`/product/:id`, async(req, res)=>{
     const product = await prisma.product.delete({
         where: {id: Number(id)}
     })
-    res.json(product, 'Eliminado')
+    res.json(product)
 })
 
 

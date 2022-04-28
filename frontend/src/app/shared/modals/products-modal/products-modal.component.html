@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Afegir Producte</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form (ngSubmit)="saveMessage()">
+        <div class="form-group mb-3">
+            <label for="name">Nom: </label>
+            <input type="text" name="name"
+            class="form-control" [(ngModel)]="product.name">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="description">Descripció: </label>
+            <input type="text" name="description"
+            class="form-control" [(ngModel)]="product.description">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Categoria: </label>
+            <select name="category" [(ngModel)]="product.category"
+            class="form-select">
+                <option *ngFor="let category of categories" value="{{category.id}}">
+                {{category.name}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group mt-4">
+            <button mat-button color="primary" [mat-dialog-close]="true" type="submit">Enviar</button>
+            <button mat-button color="warn" mat-dialog-close type="button">Cancel·lar</button>
+        </div>
+
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+</mat-dialog-actions>

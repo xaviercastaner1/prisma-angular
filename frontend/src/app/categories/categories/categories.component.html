@@ -1,0 +1,12 @@
+<div class="container mt-4">
+    <div class="header d-flex justify-content-between align-items-end">
+        <h1 class="fw-bolder">Categories</h1>
+        <button (click)="addCategory()" class="btn btn-primary"
+        style="height: 50%;">Afegir Categoria</button>
+    </div>
+    <hr>
+
+    <div class="categories">
+        <app-category *ngFor="let category of categories" [name]="category.name"></app-category>
+    </div>
+</div>

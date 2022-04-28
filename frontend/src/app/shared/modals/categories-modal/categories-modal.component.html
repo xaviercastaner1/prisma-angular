@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Afegir Categoria</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form (ngSubmit)="saveMessage()" #myForm>
+        <div class="form-group">
+            <label for="name">Nom: </label>
+            <input type="text" name="name" class="form-control" [(ngModel)]="category.name">
+        </div>
+
+        <div class="form-group mt-4">
+            <button mat-button color="primary" [mat-dialog-close]="true" type="submit">Enviar</button>
+            <button mat-button color="warn">Cancel·lar</button>
+        </div>
+
+    </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+</mat-dialog-actions>
