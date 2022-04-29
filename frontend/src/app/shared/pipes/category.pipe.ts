@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Injector } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Category } from '../interfaces/category';
-import { CategoryService } from '../shared/services/category.service';
+import { Category } from '../../interfaces/category';
+import { CategoryService } from '../services/category.service';
 
 export let AppInjector: Injector;
 

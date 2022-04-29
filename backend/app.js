@@ -16,10 +16,10 @@ app.get('/', (req, res)=> {
 
 //Crear un registro
 app.post(`/product`, async(req, res)=>{
-    const { name, description, category } = req.body
+    const { name, description, categoryId } = req.body
     const result = await prisma.product.create({
         data: {
-            name, description, categoryId: Number(category)
+            name, description, categoryId: Number(categoryId)
         }
     })
     res.json(result)

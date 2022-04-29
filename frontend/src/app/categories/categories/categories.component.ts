@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CategoriesModalComponent } from 'src/app/shared/modals/categories-modal/categories-modal.component';
+import { CategoriesModalComponent } from 'src/app/categories/categories-modal/categories-modal.component';
 
 @Component({
   selector: 'app-categories',

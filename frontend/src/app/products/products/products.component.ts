@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductsModalComponent } from 'src/app/shared/modals/products-modal/products-modal.component';
+import { ProductsModalComponent } from 'src/app/products/products-modal/products-modal.component';
 
 @Component({
   selector: 'app-products',

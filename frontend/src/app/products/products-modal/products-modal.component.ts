@@ -2,7 +2,7 @@ import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
-import { CategoryService } from '../../services/category.service';
+import { CategoryService } from '../../shared/services/category.service';
 
 @Component({
   selector: 'app-products-modal',
@@ -31,8 +31,9 @@ export class ProductsModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('data', this.data)
     if (this.data) {
+      console.log('data', this.data)
+
       this.product = this.data
       this.title = 'Actualitzar Producte'
     }
