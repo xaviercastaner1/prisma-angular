@@ -7,6 +7,7 @@
     <hr>
 
     <div class="categories">
-        <app-category *ngFor="let category of categories" [name]="category.name"></app-category>
+        <app-category *ngFor="let category of categories" [category]="category"
+        (refreshCategories)="getAll()"></app-category>
     </div>
 </div>

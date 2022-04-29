@@ -112,11 +112,12 @@ app.put(`/category/:id`, async (req, res) => {
 
 //Eliminar un registro
 app.delete(`/category/:id`, async (req, res) => {
+    
     const { id } = req.params
     const category = await prisma.category.delete({
         where: { id: Number(id) }
     })
-    res.json(category, 'Eliminado')
+    res.json(category)
 })
 
 

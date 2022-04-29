@@ -16,18 +16,18 @@ model Post {
   content String
 }
 
-model Product {
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(255)
-  description String @db.Text
-  category Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-
-  @@index(categoryId)
-}
-
 model Category {
   id Int @id @default(autoincrement())
   name String @db.VarChar(255)
   products Product[]
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(255)
+  description String @db.Text
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  categoryId Int
+
+  @@index(categoryId)
 }

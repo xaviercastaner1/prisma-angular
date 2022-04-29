@@ -1,5 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from 'src/app/interfaces/category';
 
 @Component({
@@ -9,24 +9,28 @@ import { Category } from 'src/app/interfaces/category';
 })
 export class CategoriesModalComponent implements OnInit {
 
-  @ViewChild('myForm') myForm!: ElementRef
+  title: string = 'Afegir Categoria'
 
   @Output() submitClicked = new EventEmitter<any>();
-
-  categories: Category[] = []
 
   category: Category = {
     name: ''
   }
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Category,
     public dialogRef: MatDialogRef<CategoriesModalComponent>
   ) {
 
   }
 
   ngOnInit(): void {
+    if (this.data) {
+      console.log('data', this.data)
 
+      this.category = this.data
+      this.title = 'Editar Categoria'
+    }
   }
 
   saveMessage() {

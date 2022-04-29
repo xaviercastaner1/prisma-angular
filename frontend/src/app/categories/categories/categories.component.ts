@@ -19,6 +19,10 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAll()
+  }
+
+  getAll() {
     this.service.getAllCategories()
       .subscribe((categories: Category[]) => {
         console.log('categories', categories)
@@ -42,6 +46,10 @@ export class CategoriesComponent implements OnInit {
             })
         })
     });
+  }
+
+  editCategory(ev:any) {
+    console.log(ev)
   }
 
 
