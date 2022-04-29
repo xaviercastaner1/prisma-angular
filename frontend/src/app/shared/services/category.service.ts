@@ -20,4 +20,12 @@ export class CategoryService {
   postCategory(category: Category) {
     return this.httpClient.post(`http://localhost:3000/category`, category)
   }
+
+  putCategory(category: Category) {
+    return this.httpClient.put(`http://localhost:3000/category/${category.id}`, category)
+  }
+
+  deleteCategory(id: number) {
+    return this.httpClient.delete(`http://localhost:3000/category/${id}`)
+  }
 }
