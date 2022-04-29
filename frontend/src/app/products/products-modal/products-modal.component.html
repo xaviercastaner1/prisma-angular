@@ -19,7 +19,7 @@
             <select name="category" [(ngModel)]="product.categoryId"
             class="form-select">
                 <option *ngFor="let category of categories" value="{{category.id}}">
-                {{category.name}}
+                {{category.name | titlecase}}
                 </option>
             </select>
         </div>

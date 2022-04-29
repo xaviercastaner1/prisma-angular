@@ -47,10 +47,10 @@ app.get(`/product/:id`, async (req, res) => {
 //Actualizar un registro
 app.put(`/product/:id`, async(req, res)=>{
     const {id} = req.params
-    const { name, description, category } = req.body
+    const { name, description, categoryId } = req.body
     const product = await prisma.product.update({
         where: {id: Number(id)},
-        data: { name, description, category }
+        data: { name, description, categoryId: Number(categoryId) }
     })
     res.json(product)
 })

@@ -1,2 +1,16 @@
+<app-header></app-header>
 
-<router-outlet></router-outlet>
+<div class="row" style="margin-left: 1rem;">
+    <div class="col-2 mt-5">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action" routerLink="/products"
+            routerLinkActive="active">Productes</a>
+            <a class="list-group-item list-group-item-action" routerLink="/categories"
+            routerLinkActive="active">Categories</a>
+        </div>
+    </div>
+
+    <div class="col-9">
+        <router-outlet></router-outlet>
+    </div>
+</div>
