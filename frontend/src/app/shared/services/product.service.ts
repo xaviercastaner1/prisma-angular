@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProducts() {
-    return this.httpClient.get<any>(`http://localhost:3000/products`)
+    return this.httpClient.get<Product[]>(`http://localhost:3000/products`)
   }
 
   postProduct(product: Product) {
